@@ -32,6 +32,9 @@ public class BaseProfile {
     @JoinColumn(name = "user_id", unique = true)
     private User user;
 
+    @Builder.Default
+    private boolean profileCompleted = false;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

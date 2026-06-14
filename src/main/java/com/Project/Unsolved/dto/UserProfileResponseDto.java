@@ -19,4 +19,5 @@ public class UserProfileResponseDto {
     private String degree;      // Student only
     private Set<String> skills; // Student only
     private String profession;  // Professional only
+    private boolean profileCompleted;
 }

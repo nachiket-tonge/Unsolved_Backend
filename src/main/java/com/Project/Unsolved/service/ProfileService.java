@@ -44,6 +44,7 @@ public class ProfileService {
         baseProfile.setState(requestDto.getState());
         baseProfile.setBio(requestDto.getBio());
         baseProfile.setProfileImageUrl(requestDto.getProfileImageUrl());
+        baseProfile.setProfileCompleted(true);
         baseProfileRepository.save(baseProfile);
 
         // Create/update student profile
@@ -52,6 +53,7 @@ public class ProfileService {
         studentProfile.setBaseProfile(baseProfile);
         studentProfile.setDegree("B.Tech");
         studentProfile.setSkills(requestDto.getSkills());
+
         studentProfileRepository.save(studentProfile);
     }
 
@@ -73,6 +75,7 @@ public class ProfileService {
         baseProfile.setState(requestDto.getState());
         baseProfile.setProfileImageUrl(requestDto.getProfileImageUrl());
         baseProfile.setBio(requestDto.getBio());
+        baseProfile.setProfileCompleted(true);
         baseProfileRepository.save(baseProfile);  // ✅ FIXED: Save BaseProfile changes
 
         // 5. Get or create ProfessionalProfile
@@ -101,6 +104,7 @@ public class ProfileService {
         dto.setBio(baseProfile.getBio());
         dto.setPhoto(baseProfile.getProfileImageUrl());
         dto.setRole(user.getRole());
+        dto.setProfileCompleted(baseProfile.isProfileCompleted());
 
         // Add role-specific data
         if (Role.STUDENT.equals(user.getRole())) {
