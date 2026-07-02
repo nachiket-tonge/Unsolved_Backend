@@ -40,4 +40,16 @@ public class SolutionController {
     ) {
         return ResponseEntity.ok(solutionService.getSolutionByProblem(problemId));
     }
+    @GetMapping("/me/count")
+    public ResponseEntity<Integer> getMySubmissionCount() {
+        return ResponseEntity.ok(solutionService.getMySubmissionCount());
+    }
+    @GetMapping("/me")
+    public ResponseEntity<List<SolutionResponseDto>> getMySolutions() {
+
+        return ResponseEntity.ok(
+                solutionService.getMySolutions()
+        );
+
+    }
 }

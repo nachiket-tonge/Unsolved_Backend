@@ -58,6 +58,9 @@ public class SecurityConfig {
                         // ✅ ACCEPT SOLUTION → AUTH (checked in service)
                         .requestMatchers(HttpMethod.POST, "/solutions/*/accept").authenticated()
 
+                        .requestMatchers("/dashboard/platform-stats").permitAll()
+                        .requestMatchers("/dashboard/**").authenticated()
+
                         // 🔒 Everything else
                         .anyRequest().authenticated()
                 )

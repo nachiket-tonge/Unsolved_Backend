@@ -76,4 +76,12 @@ public class ProblemController {
     ) {
         return ResponseEntity.ok(problemService.getComments(problemId));
     }
+    @GetMapping("/me")
+    public ResponseEntity<List<ProblemResponseDto>> getMyProblems() {
+
+        return ResponseEntity.ok(
+                problemService.getMyProblems()
+        );
+
+    }
 }
