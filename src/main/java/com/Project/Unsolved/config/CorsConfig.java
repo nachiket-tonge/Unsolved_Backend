@@ -19,7 +19,7 @@ public class CorsConfig {
 
         config.setAllowedOriginPatterns(List.of(
                 "http://localhost:3000",
-                "https://unsolved.vercel.app/"
+                "https://unsolved-delta.vercel.app/"
         ));
 
         config.setAllowedHeaders(List.of("*"));
