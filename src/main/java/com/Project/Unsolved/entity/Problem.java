@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,8 +34,14 @@ public class Problem {
     private String city;
     private String state;
 
-    @ElementCollection
-    private List<String> tags;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+            name = "problem_tags",
+            joinColumns = @JoinColumn(name = "problem_id")
+    )
+    @Column(name = "tag")
+    @OrderColumn(name = "tag_index")
+    private List<String> tags = new ArrayList<>();
 
     public enum ProblemStatus {
         OPEN,
