@@ -77,16 +77,37 @@ public class SecurityConfig {
         return http.build();
     }
 
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
+
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(Arrays.asList("http://localhost:3000", "http://localhost:63342"));
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        config.setAllowedOriginPatterns(Arrays.asList(
+                "http://localhost:3000",
+                "http://localhost:63342",
+                "https://unsolved-delta.vercel.app"
+        ));
+
+        config.setAllowedMethods(Arrays.asList(
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "OPTIONS"
+        ));
+
         config.setAllowedHeaders(Arrays.asList("*"));
+
+        config.setExposedHeaders(Arrays.asList("Authorization"));
+
         config.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+
         source.registerCorsConfiguration("/**", config);
+
         return source;
     }
 
